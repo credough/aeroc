@@ -359,58 +359,57 @@
 <!---------------------------- Chart.js (Bar/Line Charts) ------------------------------->
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
-  // --------------------------------Bar Chart (Dummy data)------------------------------------------>
     // --------------------------------Bar Chart (REAL DATA from Backend)------------------------------------------>
-  fetch("http://127.0.0.1:8000/bar-chart-data")
-    .then(res => res.json())
-    .then(data => {
-      const cityMap = {};
+fetch("http://35.78.108.147:8000/bar-chart-data")
+  .then(res => res.json())
+  .then(data => {
+    const cityMap = {};
 
-      // Group PM2.5 values by city (across all activities)
-      data.forEach(row => {
-        const city = row.city;
-        const value = parseFloat(row.value);
-        if (!cityMap[city]) cityMap[city] = [];
-        cityMap[city].push(value);
-      });
-
-      const cityLabels = Object.keys(cityMap);
-      const cityAverages = cityLabels.map(city => {
-        const values = cityMap[city];
-        const avg = values.reduce((a, b) => a + b, 0) / values.length;
-        return parseFloat(avg.toFixed(2));
-      });
-
-      const barCtx = document.getElementById('barChart').getContext('2d');
-      new Chart(barCtx, {
-        type: 'bar',
-        data: {
-          labels: cityLabels,
-          datasets: [{
-            label: "Avg PM2.5 (µg/m³)",
-            data: cityAverages,
-            backgroundColor: '#4aa8ff',
-            borderRadius: 6
-          }]
-        },
-        options: {
-          responsive: true,
-          plugins: {
-            legend: { display: false },
-            title: {
-              display: true,
-              text: 'Average PM2.5 by City'
-            }
-          },
-          scales: {
-            y: { beginAtZero: true }
-          }
-        }
-      });
-    })
-    .catch(err => {
-      console.error("Failed to fetch bar chart data:", err);
+    // Group PM2.5 values by city (across all activities)
+    data.forEach(row => {
+      const city = row.city;
+      const value = parseFloat(row.value);
+      if (!cityMap[city]) cityMap[city] = [];
+      cityMap[city].push(value);
     });
+
+    const cityLabels = Object.keys(cityMap);
+    const cityAverages = cityLabels.map(city => {
+      const values = cityMap[city];
+      const avg = values.reduce((a, b) => a + b, 0) / values.length;
+      return parseFloat(avg.toFixed(2));
+    });
+
+    const barCtx = document.getElementById('barChart').getContext('2d');
+    new Chart(barCtx, {
+      type: 'bar',
+      data: {
+        labels: cityLabels,
+        datasets: [{
+          label: "Avg PM2.5 (µg/m³)",
+          data: cityAverages,
+          backgroundColor: '#4aa8ff',
+          borderRadius: 6
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: { display: false },
+          title: {
+            display: true,
+            text: 'Average PM2.5 by City'
+          }
+        },
+        scales: {
+          y: { beginAtZero: true }
+        }
+      }
+    });
+  })
+  .catch(err => {
+    console.error("Failed to fetch bar chart data:", err);
+  });
 
 
   // --------------------------------Line Chart (Dummy Data)------------------------>
@@ -448,60 +447,61 @@
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
   // Initialize map
-  const map = L.map('map').setView([14.60, 120.98], 5);
+const map = L.map('map').setView([14.60, 120.98], 5);
 
-  // Add OpenStreetMap tile layer
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '© OpenStreetMap contributors'
-  }).addTo(map);
+// Add OpenStreetMap tile layer
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  attribution: '© OpenStreetMap contributors'
+}).addTo(map);
 
-  // Color scale based on PM2.5
-  const getColor = (value) => {
-    return value > 55 ? '#ff0000' :
-           value > 40 ? '#ffa500' :
-           value > 25 ? '#ffff00' :
-           value > 10 ? '#90ee90' :
-                        '#008000';
-  };
+// Color scale based on PM2.5
+const getColor = (value) => {
+  return value > 55 ? '#ff0000' :
+         value > 40 ? '#ffa500' :
+         value > 25 ? '#ffff00' :
+         value > 10 ? '#90ee90' :
+                      '#008000';
+};
 
-  // Fetch simulation data and render circle markers on map
-  fetch("http://127.0.0.1:8000/choropleth-data")
-    .then(res => res.json())
-    .then(data => {
-      const provinceCoordinates = {
-        "NCR": [14.6, 120.98],
-        "DKI Jakarta": [-6.2, 106.8],
-        "West Java": [-6.9, 107.6],
-        "East Java": [-7.3, 112.7],
-        "Central Java": [-6.99, 110.4],
-        "North Sumatra": [3.6, 98.7],
-        "South Sulawesi": [-5.1, 119.4],
-        "Banten": [-6.1, 106.6]
-      };
+// Fetch simulation data and render circle markers on map
+fetch("http://35.78.108.147:8000/choropleth-data")
+  .then(res => res.json())
+  .then(data => {
+    const provinceCoordinates = {
+      "NCR": [14.6, 120.98],
+      "DKI Jakarta": [-6.2, 106.8],
+      "West Java": [-6.9, 107.6],
+      "East Java": [-7.3, 112.7],
+      "Central Java": [-6.99, 110.4],
+      "North Sumatra": [3.6, 98.7],
+      "South Sulawesi": [-5.1, 119.4],
+      "Banten": [-6.1, 106.6]
+    };
 
-      data.forEach(row => {
-        const coords = provinceCoordinates[row.province];
-        if (!coords) return;
+    data.forEach(row => {
+      const coords = provinceCoordinates[row.province];
+      if (!coords) return;
 
-        const color = getColor(row.value);
-        const marker = L.circleMarker([coords[0], coords[1]], {
-          radius: 10,
-          fillColor: color,
-          fillOpacity: 0.8,
-          color: "#000",
-          weight: 1
-        }).addTo(map);
+      const color = getColor(row.value);
+      const marker = L.circleMarker([coords[0], coords[1]], {
+        radius: 10,
+        fillColor: color,
+        fillOpacity: 0.8,
+        color: "#000",
+        weight: 1
+      }).addTo(map);
 
-        marker.bindPopup(`
-          <strong>${row.province}, ${row.country}</strong><br>
-          PM2.5: ${row.value} µg/m³<br>
-          Inhaled: ${row.micrograms_pm25_inhaled} µg
-        `);
-      });
-    })
-    .catch(err => {
-      console.error("Failed to fetch choropleth data:", err);
+      marker.bindPopup(`
+        <strong>${row.province}, ${row.country}</strong><br>
+        PM2.5: ${row.value} µg/m³<br>
+        Inhaled: ${row.micrograms_pm25_inhaled} µg
+      `);
     });
+  })
+  .catch(err => {
+    console.error("Failed to fetch choropleth data:", err);
+  });
+
 </script>
 
 
@@ -565,7 +565,7 @@
   const duration_minutes = Math.abs((to - from) / 60000);
 
   // Step 4----- Send data to backend
-  fetch('http://127.0.0.1:8000/simulate', {
+  fetch('http://35.78.108.147:8000/simulate', {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
