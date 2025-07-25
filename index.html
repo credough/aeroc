@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AeroC</title>
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="style.css" />
+  <!-- Boxicons -->
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <!-- Google Fonts: Montserrat -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+  <!-- AOS Animation CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <!-- Swiper.js CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+</head>
+
+
+<body>
+
+  <!-- Decorative Clouds -->
+  <div class="cloud-wrapper cloud-left-wrapper">
+    <img src="design elements/cloud1.png" alt="Cloud Left" class="cloud" />
+  </div>
+  <div class="cloud-wrapper cloud-right-wrapper">
+    <img src="design elements/cloud2.png" alt="Cloud Right" class="cloud" />
+  </div>
+
+  <!-- Navigation -->
+  <header class="navbar">
+    <div class="logo">
+      <img src="design elements/LOGO.png" alt="Your Logo" />
+    </div>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#how-it-works">How it Works</a></li>
+        <li><a href="#check-air">Check Air</a></li>
+        <li><a href="#data-visualization">Data Visualization</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section id="home" class="hero" data-aos="fade-up" data-aos-delay="300">
+    <h1>Clean Air. Clear Vision. <span>AeroC</span></h1>
+    <p>Our aim is a future guided by data and vision.</p>
+    <a href="#check-air" class="btn-primary">GET STARTED</a>
+  </section>
+
+  <!-- HOW IT WORKS SECTION -->
+  <section id="how-it-works" class="how-it-works" data-aos="fade-up" data-aos-delay="300">
+    <!-- DECORATIVE CLOUDS FOR THIS SECTION -->
+    <div class="cloud-wrapper cloud1-left-next">
+      <img src="design elements/cloud1.png" alt="Cloud Left" class="cloud" />
+    </div>
+    <div class="cloud-wrapper cloud2-right-next">
+      <img src="design elements/cloud2.png" alt="Cloud Right" class="cloud" />
+    </div>
+
+    <h2>How <span>AeroC</span> Works</h2>
+    <p class="subtitle">Our system simplifies the air pollution checking process</p>
+    <div class="cards">
+      <div class="card">
+        <div class="icon"><i class='bx bxs-map'></i></div>
+        <h3>Your City</h3>
+        <p>Input in your country and city to begin checking air data in your area.</p>
+      </div>
+      <div class="card">
+        <div class="icon"><i class='bx bxs-bar-chart-alt-2'></i></div>
+        <h3>Choose Activity</h3>
+        <p>Select the activity you are doing.</p>
+      </div>
+      <div class="card">
+        <div class="icon"><i class='bx bx-line-chart'></i></div>
+        <h3>View Results</h3>
+        <p>We’ll show how much pollution your body get.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CHECK AIR SECTION with Swiper.js -->
+  <section id="check-air" class="check-air-section" data-aos="fade-up" data-aos-delay="300">
+    <div class="check-air-inner">
+      <h2>Check Air Impact</h2>
+      <p class="subtitle">Answer a few steps to estimate your air impact.</p>
+
+      <!-- Steps Indicators -->
+      <div class="steps">
+        <div class="step active">1</div>
+        <div class="step">2</div>
+        <div class="step">3</div>
+      </div>
+
+      <!-- Multi-step Form Using Swiper.js -->
+      <form id="airCheckForm">
+        <div class="swiper myFormSwiper">
+          <div class="swiper-wrapper">
+
+            <!-- Step 1 -->
+<div class="swiper-slide">
+  <div class="form-card">
+    <!-- Country Dropdown -->
+    <label for="country">Choose your country</label>
+    <select id="country" required>
+      <option value="">Select a country</option>
+      <option value="philippines">Philippines</option>
+      <option value="indonesia">Indonesia</option>
+    </select>
+
+    <!-- City Dropdown (filtered by country) -->
+    <label for="city">Choose your city</label>
+    <select id="city" required>
+      <option value="">Select a city</option>
+    </select>
+
+    <div class="nav-buttons">
+      <button class="custom-next">NEXT</button>
+    </div>
+  </div>
+</div>
+
+
+            <!-- Step 2 -->
+            <div class="swiper-slide">
+              <div class="form-card">
+                <label for="activity">What are you doing?</label>
+                <select id="activity" required>
+                  <option value="">Select an activity</option>
+                  <option value="walking">Walking</option>
+                  <option value="jogging">Jogging</option>
+                  <option value="resting">Resting</option>
+                </select>
+                <div class="nav-buttons">
+                  <button class="custom-prev">BACK</button>
+                  <button class="custom-next">NEXT</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="swiper-slide">
+              <div class="form-card">
+                <div class="time-range">
+                  <div class="time-group">
+                    <label for="fromTime">From:</label>
+                    <input type="time" id="fromTime" name="fromTime" required>
+                  </div>
+                  <div class="time-group">
+                    <label for="toTime">To:</label>
+                    <input type="time" id="toTime" name="toTime" required>
+                  </div>
+                </div>
+                <div class="nav-buttons">
+                  <button class="custom-prev">BACK</button>
+                  <button type="submit">Check Air</button>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </form>
+      <!-- Result Display -->
+<div id="check-air-result" class="result-box" style="margin-top: 2rem; display: none; background: #1d1f27; padding: 1rem; border-radius: 10px;">
+  <h3 style="margin-bottom: 0.5rem;">Result:</h3>
+  <p id="result-text" style="line-height: 1.6;"></p>
+</div>
+
+
+    </div>
+  </section>
+
+  <!-- DATA VIZUALIZATIOOOO (I used Chart.js & Leaflet.js) -->
+  <section id="data-visualization" class="data-visualization-section" data-aos="fade-up" data-aos-delay="300">
+    <div class="content-wrapper">
+      <h2>Data Visualization</h2>
+      <p class="subtitle">Here’s a preview of how air quality data will be visualized.</p>
+
+      <div class="chart-container">
+        <canvas id="barChart"></canvas>
+      </div>
+
+      <div class="chart-container">
+        <canvas id="lineChart"></canvas>
+      </div>
+    </div>
+
+    <h3>Air Quality by Location</h3>
+    <div id="map" style="height: 400px; margin-top: 2rem;"></div>
+
+    <div id="map-legend">
+      <div class="legend-item"><i style="background:#ff0000"></i> 55+ µg/m³</div>
+      <div class="legend-item"><i style="background:#ffa500"></i> 41–55 µg/m³</div>
+      <div class="legend-item"><i style="background:#ffff00"></i> 26–40 µg/m³</div>
+      <div class="legend-item"><i style="background:#90ee90"></i> 11–25 µg/m³</div>
+      <div class="legend-item"><i style="background:#008000"></i> 0–10 µg/m³</div>
+    </div>
+  </section>
+
+  <!-- CONTACT SECTION -->
+  <section id="contact" class="contact-section" data-aos="fade-up" data-aos-delay="300">
+    <div class="content-wrapper">
+      <h2>Contact Us</h2>
+      <p class="subtitle">Have a question or feedback? We'd love to hear from you.</p>
+
+      <form class="contact-form" id="contactForm">
+        <div class="form-group">
+          <input type="text" id="name" name="name" placeholder="Your Name" required />
+        </div>
+        <div class="form-group">
+          <input type="email" id="email" name="email" placeholder="Your Email" required />
+        </div>
+        <div class="form-group">
+          <textarea id="message" name="message" placeholder="Your Message" rows="5" required></textarea>
+        </div>
+        <button type="submit" class="btn-primary">SEND</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-content">
+      <p>&copy; 2025 AeroC. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- ===========================
+     ALL the JavaScript Libraries and Scripts I used
+     =========================== -->
+<!----------------DECORATIVE------------------->
+<!---------- Sticky Navbar Fade-out ----------->
+<script>
+  const navbar = document.querySelector('.navbar');
+  const homeSection = document.querySelector('#home');
+  let fadeTimeout = null;
+
+  function isInHomeSection() {
+    const rect = homeSection.getBoundingClientRect();
+    return rect.top <= 0 && rect.bottom >= window.innerHeight / 2;
+  }
+
+  window.addEventListener('scroll', () => {
+    navbar.classList.remove('fade-out');
+    if (fadeTimeout !== null) clearTimeout(fadeTimeout);
+
+    if (!isInHomeSection()) {
+      fadeTimeout = setTimeout(() => {
+        navbar.classList.add('fade-out');
+      }, 2000);
+    }
+  });
+</script>
+
+
+<!-------------------------------- AOS (Animate as u Scroll) ------------------------->
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>
+  AOS.init({
+    duration: 800,
+    offset: 100,
+    once: true
+  });
+</script>
+
+<!-------------------------------- Swiper.js (Form Navigation Slider) ---------------->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+  const swiper = new Swiper('.myFormSwiper', {
+    effect: 'slide',
+    allowTouchMove: false,
+    slidesPerView: 1,
+    autoHeight: true,
+    speed: 600,
+  });
+
+  const steps = document.querySelectorAll('.step');
+
+  swiper.on('slideChange', () => {
+    steps.forEach((step, index) => {
+      step.classList.toggle('active', index === swiper.activeIndex);
+    });
+  });
+
+  document.querySelectorAll('.custom-next').forEach(button => {
+    button.addEventListener('click', (e) => {
+      e.preventDefault();
+      const currentSlide = swiper.slides[swiper.activeIndex];
+      const input = currentSlide.querySelector('select, input');
+
+      if (input && !input.value) {
+        input.reportValidity();
+      } else {
+        swiper.slideNext();
+      }
+    });
+  });
+
+  document.querySelectorAll('.custom-prev').forEach(button => {
+    button.addEventListener('click', (e) => {
+      e.preventDefault();
+      swiper.slidePrev();
+    });
+  });
+</script>
+
+<!------------------------------ ScrollSpy Navigation ----------------------------->
+<script>
+  const sections = document.querySelectorAll("section[id]");
+  const navLinks = document.querySelectorAll(".nav-links a");
+
+  window.addEventListener("scroll", () => {
+    let current = "";
+
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop - 100;
+      const sectionHeight = section.offsetHeight;
+
+      if (pageYOffset >= sectionTop && pageYOffset < sectionTop + sectionHeight) {
+        current = section.getAttribute("id");
+      }
+    });
+
+    navLinks.forEach(link => {
+      link.classList.remove("active");
+      if (link.getAttribute("href") === `#${current}`) {
+        link.classList.add("active");
+      }
+    });
+  });
+</script>
+
+<!------------------------------ Cloud Appearance on Scroll ------------------------->
+<script>
+  const nextLeftCloud = document.querySelector('.cloud1-left-next');
+  const nextRightCloud = document.querySelector('.cloud2-right-next');
+
+  function isInHowItWorks() {
+    const section = document.getElementById('how-it-works');
+    const rect = section.getBoundingClientRect();
+    return rect.top < window.innerHeight * 0.75;
+  }
+
+  window.addEventListener('scroll', () => {
+    const visible = isInHowItWorks();
+    nextLeftCloud.style.opacity = visible ? 1 : 0;
+    nextRightCloud.style.opacity = visible ? 1 : 0;
+  });
+</script>
+
+
+<!------------------------------- DATA VISUALIZATION ------------------------------------>
+<!---------------------------- Chart.js (Bar/Line Charts) ------------------------------->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+  // --------------------------------Bar Chart (Dummy data)------------------------------------------>
+    // --------------------------------Bar Chart (REAL DATA from Backend)------------------------------------------>
+  fetch("http://127.0.0.1:8000/bar-chart-data")
+    .then(res => res.json())
+    .then(data => {
+      const cityMap = {};
+
+      // Group PM2.5 values by city (across all activities)
+      data.forEach(row => {
+        const city = row.city;
+        const value = parseFloat(row.value);
+        if (!cityMap[city]) cityMap[city] = [];
+        cityMap[city].push(value);
+      });
+
+      const cityLabels = Object.keys(cityMap);
+      const cityAverages = cityLabels.map(city => {
+        const values = cityMap[city];
+        const avg = values.reduce((a, b) => a + b, 0) / values.length;
+        return parseFloat(avg.toFixed(2));
+      });
+
+      const barCtx = document.getElementById('barChart').getContext('2d');
+      new Chart(barCtx, {
+        type: 'bar',
+        data: {
+          labels: cityLabels,
+          datasets: [{
+            label: "Avg PM2.5 (µg/m³)",
+            data: cityAverages,
+            backgroundColor: '#4aa8ff',
+            borderRadius: 6
+          }]
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            legend: { display: false },
+            title: {
+              display: true,
+              text: 'Average PM2.5 by City'
+            }
+          },
+          scales: {
+            y: { beginAtZero: true }
+          }
+        }
+      });
+    })
+    .catch(err => {
+      console.error("Failed to fetch bar chart data:", err);
+    });
+
+
+  // --------------------------------Line Chart (Dummy Data)------------------------>
+  const lineCtx = document.getElementById('lineChart').getContext('2d');
+  new Chart(lineCtx, {
+    type: 'line',
+    data: {
+      labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+      datasets: [{
+        label: 'PM2.5 Levels (µg/m³)',
+        data: [30, 28, 35, 40, 38, 33, 29],
+        fill: false,
+        borderColor: '#1773e3',
+        tension: 0.3
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: { display: true },
+        title: {
+          display: true,
+          text: 'Air Quality Over a Week'
+        }
+      },
+      scales: {
+        y: { beginAtZero: true }
+      }
+    }
+  });
+</script>
+
+<!----------------------------- CHLOROPLETH--------------------------------------------->
+<!------------------------------ Leaflet.js (Interactive Map + GeoJSON Data) ----------->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+  // Initialize map
+  const map = L.map('map').setView([14.60, 120.98], 5);
+
+  // Add OpenStreetMap tile layer
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '© OpenStreetMap contributors'
+  }).addTo(map);
+
+  // Color scale based on PM2.5
+  const getColor = (value) => {
+    return value > 55 ? '#ff0000' :
+           value > 40 ? '#ffa500' :
+           value > 25 ? '#ffff00' :
+           value > 10 ? '#90ee90' :
+                        '#008000';
+  };
+
+  // Fetch simulation data and render circle markers on map
+  fetch("http://127.0.0.1:8000/choropleth-data")
+    .then(res => res.json())
+    .then(data => {
+      const provinceCoordinates = {
+        "NCR": [14.6, 120.98],
+        "DKI Jakarta": [-6.2, 106.8],
+        "West Java": [-6.9, 107.6],
+        "East Java": [-7.3, 112.7],
+        "Central Java": [-6.99, 110.4],
+        "North Sumatra": [3.6, 98.7],
+        "South Sulawesi": [-5.1, 119.4],
+        "Banten": [-6.1, 106.6]
+      };
+
+      data.forEach(row => {
+        const coords = provinceCoordinates[row.province];
+        if (!coords) return;
+
+        const color = getColor(row.value);
+        const marker = L.circleMarker([coords[0], coords[1]], {
+          radius: 10,
+          fillColor: color,
+          fillOpacity: 0.8,
+          color: "#000",
+          weight: 1
+        }).addTo(map);
+
+        marker.bindPopup(`
+          <strong>${row.province}, ${row.country}</strong><br>
+          PM2.5: ${row.value} µg/m³<br>
+          Inhaled: ${row.micrograms_pm25_inhaled} µg
+        `);
+      });
+    })
+    .catch(err => {
+      console.error("Failed to fetch choropleth data:", err);
+    });
+</script>
+
+
+<!-- Dynamic City Marker based on API and Coordinates Dictionary -->
+<script>
+  const cityCoordinates = {
+    "Manila": [120.98, 14.6],
+    "Quezon City": [121.0437, 14.676],
+    "Taguig": [121.0509, 14.5176],
+    "Makati": [121.0244, 14.5547],
+    "Pasig": [121.0851, 14.5764],
+    "Pasay": [121.0014, 14.5378],
+    "Mandaluyong": [121.0359, 14.5794],
+    "Parañaque": [121.0198, 14.4711],
+    "Caloocan": [120.97, 14.65],
+    "San Juan": [121.0392, 14.602],
+    "Las Piñas": [120.9833, 14.45],
+    "Marikina": [121.1029, 14.6507],
+    "Valenzuela": [120.983, 14.7011],
+    "Jakarta": [106.8456, -6.2088],
+    "Surabaya": [112.7688, -7.2504],
+    "Bandung": [107.6191, -6.9175],
+    "Medan": [98.6722, 3.5952],
+    "Semarang": [110.4167, -6.9667],
+    "Makassar": [119.4327, -5.1477],
+    "Depok": [106.7942, -6.4025],
+    "Tangerang": [106.6319, -6.1783]
+  };
+</script>
+
+<!------------------------------- CHECK AIR ------------------------------------>
+
+<script>
+  document.getElementById('airCheckForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+
+  // Get the inputs FIRST
+  const country = document.getElementById('country').value;
+  const city = document.getElementById('city').value;
+  const activity = document.getElementById('activity').value;
+  const fromTime = document.getElementById('fromTime').value;
+  const toTime = document.getElementById('toTime').value;
+
+  // step 1-----------THEN log the values
+  console.log("Submit button clicked!");
+  console.log("country:", country);
+  console.log("city:", city);
+  console.log("activity:", activity);
+  console.log("fromTime:", fromTime);
+  console.log("toTime:", toTime);
+
+  // Step 2---------If any field is empty, stop here
+  if (!city || !activity || !fromTime || !toTime) {
+    alert("Please complete all fields.");
+    return;
+  }
+
+  // Step 3----- Compute duration
+  const from = new Date(`1970-01-01T${fromTime}:00`);
+  const to = new Date(`1970-01-01T${toTime}:00`);
+  const duration_minutes = Math.abs((to - from) / 60000);
+
+  // Step 4----- Send data to backend
+  fetch('http://127.0.0.1:8000/simulate', {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      duration_minutes,
+      selected_country: country,
+      selected_city: city,
+      selected_activity: activity
+    })
+  })
+  .then(res => res.json())
+  .then(data => {
+    const resultBox = document.getElementById('check-air-result');
+    const resultText = document.getElementById('result-text');
+
+    resultText.innerHTML = `
+      <strong>City:</strong> ${data.city}<br>
+      <strong>Activity:</strong> ${data.activity}<br>
+      <strong>Duration:</strong> ${duration_minutes} minutes<br>
+      <strong>PM2.5 Inhaled:</strong> ${data.micrograms_pm25_inhaled} µg/m³<br>
+      <strong>Equivalent to:</strong> ${data.cigarette_equivalence} cigarette(s)<br>
+      <strong>Health Risk:</strong> ${data.who_risk_level}<br>
+      <strong>Note:</strong> ${data.health_effects}
+    `;
+
+    resultBox.style.display = 'block';
+    resultBox.scrollIntoView({ behavior: 'smooth' });
+  })
+  .catch(err => {
+    console.error("Error fetching simulation data:", err);
+    alert("Something went wrong. Please try again.");
+  });
+});
+
+</script>
+<script>
+  const countrySelect = document.getElementById("country");
+  const citySelect = document.getElementById("city");
+
+  const citiesByCountry = {
+  philippines: [
+    { value: "Manila", label: "Manila" },
+    { value: "Quezon City", label: "Quezon City" },
+    { value: "Taguig", label: "Taguig" },
+    { value: "Makati", label: "Makati" },
+    { value: "Pasig", label: "Pasig" },
+    { value: "Pasay", label: "Pasay" },
+    { value: "Mandaluyong", label: "Mandaluyong" },
+    { value: "Parañaque", label: "Parañaque" },
+    { value: "Caloocan", label: "Caloocan" },
+    { value: "San Juan", label: "San Juan" },
+    { value: "Las Piñas", label: "Las Piñas" },
+    { value: "Marikina", label: "Marikina" },
+    { value: "Valenzuela", label: "Valenzuela" }
+  ],
+  indonesia: [
+    { value: "Jakarta", label: "Jakarta" },
+    { value: "Bandung", label: "Bandung" },
+    { value: "Surabaya", label: "Surabaya" },
+    { value: "Medan", label: "Medan" },
+    { value: "Makassar", label: "Makassar" },
+    { value: "Depok", label: "Depok" },
+    { value: "Tangerang", label: "Tangerang" },
+    { value: "Semarang", label: "Semarang" }
+  ]
+};
+
+
+  countrySelect.addEventListener("change", function () {
+    const selectedCountry = this.value;
+    citySelect.innerHTML = '<option value="">Select a city</option>';
+
+    if (citiesByCountry[selectedCountry]) {
+      citiesByCountry[selectedCountry].forEach(city => {
+        const option = document.createElement("option");
+        option.value = city.value;
+        option.textContent = city.label;
+        citySelect.appendChild(option);
+      });
+    }
+  });
+</script>
+
+<!------------------------------- Contact Form Submit ----------------------------->
+<script>
+  document.getElementById('contactForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    alert("Thank you for your message! We'll get back to you soon.");
+    this.reset();
+  });
+</script>
+
+</body>
+</html>

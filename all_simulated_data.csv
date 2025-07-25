@@ -1,0 +1,4 @@
+city,value,country,activity,breathing_rate,micrograms_pm25_inhaled,who_threshold,who_risk_level,health_effects,cigarette_equivalence,time_fetched
+Manila,13.5,Philippines,resting,0.006,4.86,5.4,Low,Minimal impact for most. Sensitive individuals may feel mild irritation.,0.009,2025-07-23 05:14:26
+Manila,13.5,Philippines,walking,0.015,12.15,13.5,Low,Minimal impact for most. Sensitive individuals may feel mild irritation.,0.023,2025-07-23 05:14:26
+Manila,13.5,Philippines,jogging,0.035,28.35,31.5,Low,Minimal impact for most. Sensitive individuals may feel mild irritation.,0.054,2025-07-23 05:14:26
