@@ -360,7 +360,7 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
     // --------------------------------Bar Chart (REAL DATA from Backend)------------------------------------------>
-fetch("http://35.78.108.147:8000/bar-chart-data")
+fetch("https://35.78.108.147:8000/bar-chart-data")
   .then(res => res.json())
   .then(data => {
     const cityMap = {};
@@ -464,7 +464,7 @@ const getColor = (value) => {
 };
 
 // Fetch simulation data and render circle markers on map
-fetch("http://35.78.108.147:8000/choropleth-data")
+fetch("https://35.78.108.147:8000/choropleth-data")
   .then(res => res.json())
   .then(data => {
     const provinceCoordinates = {
@@ -565,7 +565,7 @@ fetch("http://35.78.108.147:8000/choropleth-data")
   const duration_minutes = Math.abs((to - from) / 60000);
 
   // Step 4----- Send data to backend
-  fetch('http://35.78.108.147:8000/simulate', {
+  fetch('https://35.78.108.147:8000/simulate', {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
