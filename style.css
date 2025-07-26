@@ -696,3 +696,11 @@ button:hover {
     display: none !important;
   }
 }
+@media (max-width: 768px) {
+  .cloud-left-wrapper,
+  .cloud-right-wrapper {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease-in-out;
+  }
+}
