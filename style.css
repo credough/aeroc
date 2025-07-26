@@ -687,3 +687,16 @@ button:hover {
     padding: 8px 16px;
   }
 }
+.cloud-left-wrapper,
+.cloud-right-wrapper {
+  width: 30vw;     /* smaller size */
+  top: 20px;       /* move upward */
+  opacity: 0.5;    /* more subtle */
+}
+.cloud-left-wrapper {
+  left: -10vw;
+}
+
+.cloud-right-wrapper {
+  right: -10vw;
+}
