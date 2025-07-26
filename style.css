@@ -691,16 +691,13 @@ button:hover {
   HIDE CLOUDS ON MOBILE
 ====================*/
 @media (max-width: 768px) {
+  .cloud-wrapper,
   .cloud-left-wrapper,
-  .cloud-right-wrapper {
+  .cloud-right-wrapper,
+  .cloud {
     display: none !important;
-  }
-}
-@media (max-width: 768px) {
-  .cloud-left-wrapper,
-  .cloud-right-wrapper {
-    opacity: 0;
+    visibility: hidden !important;
+    opacity: 0 !important;
     pointer-events: none;
-    transition: opacity 0.3s ease-in-out;
   }
 }
