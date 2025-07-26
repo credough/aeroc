@@ -563,3 +563,127 @@ button:hover {
     transform: translateY(-10px);
   }
 }
+
+/*====================
+  RESPONSIVE STYLES
+====================*/
+@media (max-width: 768px) {
+  /* NAVBAR */
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px 20px;
+  }
+
+  .logo img {
+    max-width: 60px;
+    margin-left: 0;
+    margin-top: 10px;
+  }
+
+  .nav-links {
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    gap: 6px;
+  }
+
+  /* HERO */
+  .hero {
+    padding: 60px 15px;
+  }
+
+  .hero h1 {
+    font-size: 2rem;
+  }
+
+  .btn-primary {
+    padding: 12px 20px;
+    font-size: 0.9rem;
+  }
+
+  /* HOW IT WORKS */
+  .cards {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card {
+    width: 90%;
+    max-width: 300px;
+  }
+
+  /* CHECK AIR SECTION */
+  .check-air-inner {
+    padding: 0;
+  }
+
+  .steps {
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .form-card,
+  #resultCard {
+    padding: 20px 15px;
+    margin: 0 auto;
+  }
+
+  .nav-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* MAP / CHART */
+  .chart-container {
+    padding: 15px;
+    margin: 20px auto;
+  }
+
+  #map-legend {
+    bottom: 15px;
+    right: 15px;
+    font-size: 0.7rem;
+    padding: 8px 10px;
+  }
+
+  /* CONTACT */
+  .contact-form {
+    padding: 0 10px;
+  }
+
+  /* CLOUDS */
+  .cloud-wrapper {
+    width: 40vw;
+  }
+
+  .cloud-left-wrapper,
+  .cloud-right-wrapper {
+    margin-top: 120px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero h1 {
+    font-size: 1.6rem;
+  }
+
+  .hero p {
+    font-size: 0.9rem;
+  }
+
+  .check-air-section h2,
+  .data-visualization-section h2,
+  .contact-section h2 {
+    font-size: 1.4rem;
+  }
+
+  .card h3 {
+    font-size: 1rem;
+  }
+
+  button {
+    font-size: 0.9rem;
+    padding: 8px 16px;
+  }
+}
